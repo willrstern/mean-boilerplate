@@ -1,7 +1,3 @@
-[EDUDirect Admin][0]
-
-> Powered by [Genesis Skeleton](https://github.com/ericclemmons/genesis-skeleton)
-
 ### Requirements
 
 - Node/NPM
@@ -19,7 +15,7 @@ $ npm install
 ### Usage
 
 ```
-$ grunt server
+$ grunt
 ```
 
 `NODE_ENV` testing:
@@ -49,7 +45,3 @@ $ bundle exec cap [staging|production] deploy
 ```shell
 branch=[BRANCH] bundle exec cap staging deploy
 ```
-
-
-[0]: http://edudirect.cmn.com/
-[1]: http://genesis-skeleton.com/
