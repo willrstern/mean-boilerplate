@@ -1,0 +1,53 @@
+---
+- hosts:              webservers
+  include:            ../components/ansible-common/playbook.yml
+
+- hosts:              webservers
+  include:            ../components/ansible-node/playbook.yml
+
+- hosts:              webservers
+  gather_facts:       no
+  tasks:
+    - name:           Install bower, forever, grunt-cli
+      command:        npm install -g bower forever grunt-cli
+      sudo:           yes
+
+    - name:           Remove port 80 forwarding to port 3000 if exists
+      command:        iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
+      sudo:           yes
+      ignore_errors:  yes
+
+    - name:           Add port 80 forwarding to port 3000
+      command:        iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
+      sudo:           yes
+
+- hosts:              webservers
+  gather_facts:       no
+  tasks:
+    - name:           Create deploy user
+      user:           name=deploy shell=/bin/bash
+      sudo:           yes
+
+    - name:           Grant sudo access to deploy user
+      copy:           content="%deploy ALL=(ALL) NOPASSWD:ALL" dest=/etc/sudoers.d/deploy mode=0440 force=no
+      sudo:           yes
+
+    - name:           Create /home/deploy/.ssh
+      file:           path=/home/deploy/.ssh state=directory mode=0755 owner=deploy group=deploy
+      sudo:           yes
+
+    - name:           Copy deploy user's authorized_key
+      authorized_key: user=deploy key="${item}"
+      sudo:           yes
+      with_file:
+        - files/ssh/id_rsa.pub
+
+    - name:           Copy deploy user's id_rsa
+      copy:           src=files/ssh/id_rsa dest=/home/deploy/.ssh/id_rsa owner=deploy group=deploy mode=0600
+
+    - name:           Copy deploy user's id_rsa.pub
+      copy:           src=files/ssh/id_rsa.pub dest=/home/deploy/.ssh/id_rsa.pub owner=deploy group=deploy mode=0600
+
+    - name:           set /etc/localtime to $timezone
+      command:        cp /usr/share/zoneinfo/America/Chicago /etc/localtime
+

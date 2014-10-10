@@ -1,0 +1,27 @@
+{
+  "name": "genesis-skeleton",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.2.1",
+    "angular-loading-bar": "~0.1.0",
+    "angular-lodash": "cabrel/angular-lodash",
+    "angular-mocks": "~1.0.7",
+    "angular-resource": "~1.0.7",
+    "angular-scenario": "~1.0.7",
+    "angular-ui-router": "0.2.7",
+    "angular-ui-utils": "~0.0.4",
+    "bootstrap": "3.0.2",
+    "html5shiv-dist": "~3.6.2",
+    "lodash": "~2.4.1",
+    "modernizr": "~2.6.2",
+    "jquery": "2.0.3"
+  },
+  "resolutions": {
+    "angular": "~1.2.1",
+    "bootstrap": "3.0.2"
+  },
+  "devDependencies": {
+    "ansible-common": "genesis/ansible-common#~0.1.0",
+    "ansible-node": "genesis/ansible-node#~0.1.0"
+  }
+}

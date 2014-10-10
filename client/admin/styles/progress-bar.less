@@ -1,0 +1,21 @@
+.admin-progress-bar {
+  .bar {
+    display: block;
+    span {
+      background: #999;
+      border-radius: 5px;
+      display: inline-block;
+      height: 5px;
+      min-width: 3px;
+      &.success {
+        background: @brand-success;
+      }
+      &.warning {
+        background: @brand-warning;
+      }
+      &.danger {
+        background: @brand-danger;
+      }
+    }
+  }
+}

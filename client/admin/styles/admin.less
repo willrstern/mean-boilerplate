@@ -1,0 +1,537 @@
+/**
+ * Bootstrap
+ */
+
+@import "../../../components/bootstrap/less/bootstrap.less";
+@import "../../../components/angular-loading-bar/build/loading-bar.css";
+@import "progress-bar.less";
+@import "bubble-loader.less";
+
+/**
+ * bootstrap theme overrides
+ */
+
+@font-size-base:          13px;
+@iconSpritePath:          "/img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "/img/glyphicons-halflings-white.png";
+@table-bg-hover:          lighten(@brand-success, 40%);
+@icon-font-path:          "../../../components/bootstrap/fonts/";
+
+/**
+ * Angular
+ */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none;
+}
+
+[ng-click] {
+  cursor: pointer;
+}
+
+/**
+ * App
+ */
+
+.select2-container {
+  width: 100%;
+
+  .select2-choice {
+    height: 30px;
+    line-height: 30px;
+  }
+}
+.select2-results .select2-result-label {
+  font-size: 85%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.dotted-underline {
+  border-bottom: 1px dotted #777;
+}
+
+.progress {
+  position: relative;
+  top: 5px;
+  height: 13px;
+}
+
+.progress-bar {
+  line-height: 13px;
+  color: #444;
+  white-space: nowrap;
+}
+
+.modal-content {
+  .padded-modal {
+    padding: 10px 20px;
+  }
+}
+
+.table > thead > tr > th {
+  vertical-align: top;
+  border-bottom: 1px;
+}
+
+tbody th {
+  font-weight: normal;
+}
+
+.table {
+  .sort-primary {
+    font-weight: bold;
+    color: black;
+  }
+  .sort-secondary {
+    font-weight: bold;
+    color: #666;
+  }
+  //for tables with hidden rows, odd/even don't work
+  .gray-bg {
+    background-color: #f9f9f9;
+  }
+  .well {
+    border-right: none;
+  }
+}
+.table-hover > tbody > tr:hover > td.well, .table-hover > tbody > tr:hover > th.well {
+  background-color: #f5f5f5;
+}
+tbody.table-hover > tr:hover {
+  > td,
+  > th {
+    background-color: @table-bg-hover;
+  }
+}
+
+tr.capped,
+tr.paused,
+tr.deleted,
+tr.inactive {
+  th {
+    a {
+      opacity: 0.66;
+    }
+  }
+}
+
+tr.deleted {
+  th {
+    a {
+      color: #999;
+    }
+  }
+}
+
+tr.capped {
+  th {
+    a {
+      color: #a00;
+    }
+  }
+}
+
+tr.paused {
+  th {
+    a {
+      text-decoration: line-through;
+    }
+  }
+}
+
+table .progress {
+  margin-bottom: 0;
+}
+
+.help-block {
+  font-weight: normal;
+}
+
+.btn-special {
+  .button-variant(#ffffff; #BC68D4; #86389C);
+}
+
+.github-fork-ribbon {
+  text-transform: capitalize;
+  background-color: #fa9f44;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .05);
+}
+
+#global-nav {
+  margin-bottom: 1em;
+}
+
+.nav {
+  &.nav-tabs {
+    margin-bottom: 15px;
+  }
+
+  .bg-danger {
+    a {
+      background: lighten(@brand-danger, 20%) !important;
+    }
+    &.active a{
+      background: @brand-danger !important;
+      color: white !important;
+    }
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.text-strong {
+  font-weight: bold;
+}
+
+.pop-on-hover {
+  opacity: 0.5;
+  &:hover {
+    opacity: 1.0;
+  }
+}
+
+.unselectable {
+  .user-select(none);
+}
+
+.whitespace-pre {
+  white-space: pre;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nofocus {
+  outline: none!important;
+}
+select.input-xs {
+  height: 20px;
+  font-size: 80%;
+}
+select.active {
+  background: #a9deff;
+  border-color: #9396c6;
+}
+.btn-xxs {
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical - 2; @padding-small-horizontal - 2; @font-size-small - 2; @line-height-small; @border-radius-small);
+}
+.btn-xxs {
+  padding: 1px 3px;
+}
+
+.navbar-nav li a {
+  cursor: pointer;
+}
+
+.pagination a {
+  color: lighten(@text-color,50%);
+}
+/**
+ * Nav
+ */
+
+#loading-bar .bar {
+  top: 0;
+  z-index:10;
+}
+
+#header {
+  .navbar-brand {
+    padding: 15px;
+  }
+}
+#nav {
+  background: lighten(@navbar-inverse-bg, 10%);
+
+  .navbar-collapse {
+    padding: 0;
+
+    ul li a {
+      color: lighten(@navbar-inverse-brand-color, 20%);
+      padding: 5px 15px;
+    }
+    &.in {
+      padding: 0 15px;
+    }
+  }
+}
+
+#typeahead {
+	input {
+    margin: 8px 0;
+  }
+  li {
+    strong {
+      display: inline-block;
+      padding: 2px 12px;
+    }
+
+    ul {
+      font-size: 90%;
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        padding: 2px 12px 0;
+
+        &.selected {
+          background: lighten(@brand-primary, 30%);
+        }
+        a {
+          display: inline-block;
+          margin-bottom: -4px;
+          max-width: 180px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+
+
+/**
+ * Form Components
+ */
+
+th.sortable {
+  cursor: pointer;
+  .user-select(none);
+  .group {
+    margin-top: 2px;
+  }
+  .arrows {
+    margin: 3px 3px 0 0;
+    &.text-muted {
+      opacity: 0.5;
+    }
+    .up {
+      float:left;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid black;
+    }
+    .down {
+      float:left;
+      margin: 7px 0 0 -10px;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid black;
+    }
+  }
+}
+
+.table-clickable {
+  tbody tr {
+    cursor: pointer;
+  }
+}
+
+td.dim {
+  color: lighten(@text-color,60%);
+  font-style: italic;
+}
+
+.form-choice {
+
+	label {
+		font-weight: normal;
+	}
+	.well {
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	.choice-inactive {
+		background: #dfdfdf;
+		border:1px solid #ccc;
+		border-radius: 4px 0 0 4px;
+		border-right: none;
+		box-shadow: inset -2px 2px 2px rgba(0,0,0,0.1);
+	}
+	.choice-active {
+		background: #f7f7f7;
+		border-radius: 0 4px 4px 0;
+		border-left: 1px solid #bbb;
+	}
+}
+
+.status-message {
+	color: lighten(@text-color,50%);
+	opacity: 0;
+	margin-left: 10px;
+	transition: opacity 0.6s;
+
+	&.success {
+		color: @brand-success;
+		opacity: 1;
+	}
+	&.error {
+		color: @brand-danger;
+		opacity: 1;
+	}
+}
+
+.list-group {
+  .ui-sortable-placeholder {
+    background: @brand-primary;
+    visibility: visible!important;
+    color: @brand-primary;
+
+  }
+  .ui-sortable-helper {
+    box-shadow: 0px 0px 9px lighten(@brand-primary, 10);
+  }
+}
+.panel-group {
+  .panel-heading {
+    cursor: pointer;
+    .user-select(none);
+  }
+  .panel-collapse .table {
+    margin-bottom: 0;
+  }
+}
+
+.markdown-textarea {
+  margin-bottom: 20px;
+
+  .form-group {
+    margin-bottom: 5px;
+  }
+
+  .well {
+    margin-bottom: 0px;
+  }
+}
+
+.panel-graph {
+  @panel-graph-gray: #999;
+  height: 175px;
+
+  .axis {
+    text {
+      fill: @panel-graph-gray!important;
+    }
+    line, path {
+      stroke: @panel-graph-gray;
+    }
+  }
+}
+
+.dashboard-tabs {
+  margin-bottom: 20px;
+
+  .refresh, .graphs {
+    margin-top:  11px;
+    margin-left:  20px;
+    color:  #999;
+  }
+}
+
+.dashboard-graph {
+  &.loading {
+    padding: 50px;
+    display: inline-block;
+  }
+  .graph-title {
+    &:hover h5 span {
+      color: #777;
+    }
+    h5 {
+      font-size: 16px;
+      color: #999;
+      margin: 0;
+    }
+  }
+  .metric-list {
+    list-style-type: none;
+    margin-top: 5px;
+    padding: 0;
+
+    .truncate {
+      display: inline-block;
+      min-width: 270px;
+      float: left;
+    }
+    .number {
+      display: inline-block;
+    }
+    .company.index-0 {
+      font-size: 18px;
+    }
+    .publisher.index-0 {
+      font-size: 18px;
+    }
+    .index-0 {
+      color: #555;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 26px;
+    }
+    .index-1 {
+      font-size: 16px;
+    }
+    .index-2, .index-3 {
+      font-size: 14px;
+    }
+    .index-4, .index-5 {
+      font-size: 13px;
+    }
+    .index-6, .index-7 {
+      font-size: 12px;
+    }
+    .index-8, .index-9 {
+      font-size: 11px;
+    }
+    .small {
+      font-size: 10px;
+    }
+    li {
+      color: #777;
+    }
+  }
+  .metric {
+    font-size: 48px;
+    font-weight: bold;
+    color: #555;
+    line-height: 42px;
+  }
+  .metric-small {
+    font-size: 14px;
+    font-weight: normal;
+    color: #999;
+  }
+  .dashboard-stats td{
+    padding: 3px;
+  }
+}
+
+
+/**
+ * small styles
+ */
+
+@media (max-width: @screen-xs-max) {
+  #nav {
+    background: @navbar-inverse-bg;
+  }
+  #typeahead {
+    margin-top: 40px;
+  }
+}

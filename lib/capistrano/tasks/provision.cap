@@ -1,0 +1,16 @@
+desc 'Provision server'
+task :provision do
+  on roles(:web), in: :sequence do |host|
+    if ENV['user'] and ENV['password']
+      info 'Overriding SSH connection settings...'
+      server "#{host}", user: ENV['user'], password: ENV['password'], roles: %w{web}
+    end
+
+    after 'deploy:updated', :run_provision do
+      info 'Provisioning...'
+      execute :sudo, "#{release_path}/bin/provision"
+    end
+
+    Rake::Task[:deploy].invoke
+  end
+end

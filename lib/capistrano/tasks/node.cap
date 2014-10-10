@@ -1,0 +1,16 @@
+namespace :deploy do
+  desc "Install Bower components"
+  task :bower do
+    on roles(:web) do
+      execute "cd #{fetch(:release_path)}; bower cache clean --quiet --allow-root"
+      execute "cd #{fetch(:release_path)}; bower install --quiet --allow-root"
+    end
+  end
+
+  desc "Install NPM packages"
+  task :npm do
+    on roles(:web) do
+      execute "cd #{fetch(:release_path)}; npm_config_loglevel=warn npm install"
+    end
+  end
+end
